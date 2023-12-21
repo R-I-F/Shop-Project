@@ -1,0 +1,37 @@
+.order-section{
+    background: linear-gradient(to bottom, #ffffff, #f5f5dc);
+    height: 100vh;
+}
+
+.order-summary{
+    padding: 15px;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+}
+
+.order-info{
+    margin-top: 35px;
+}
+.order-summary{
+    margin-top: 20px;
+}
+.order-summary p{
+    font-size: 0.8rem;
+}
+
+.order-link{
+    font-size: 12px;
+}
+.order-link{
+    font-size: 16px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.order-link:hover{
+    font-size: 16px;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

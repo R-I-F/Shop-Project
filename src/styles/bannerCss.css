@@ -1,0 +1,48 @@
+
+.banner{
+    width: max-content;
+    margin: 20px 10px 0 0;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    font-family: "inter", sans-serif;
+}
+
+.icon{
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.banner h3, .banner p{
+    font-size: 16px;
+    font-weight: 700;
+    padding:0;
+    margin: 0;
+}
+
+.banner p{
+    padding:10px 0;
+    font-weight: 500;
+}
+
+.success{
+    background-color: #ECFDF5;
+}
+
+.warning{
+    background-color: #FFFBEB;
+}
+
+.error{
+    /* background-color: #FEF2F2; */
+}
+
+.neutral{
+    background-color: #EFF6FF;
+}
+
+@media only screen and (max-width: 600px) {
+    .banner{
+        width: 340px;
+    }
+    }

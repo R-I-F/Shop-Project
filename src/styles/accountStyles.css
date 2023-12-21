@@ -1,0 +1,242 @@
+
+.building-type{
+    display: flex;
+    gap: 20px;
+}
+.account-page{
+    background: linear-gradient(to bottom, #ffffff, #f5f5dc);
+    height: 100vh;
+}
+.account-page-custom-links{
+    font-size: 14px;
+    color: #fafafa;
+    display: flex;
+    justify-content: center;
+    border: 2px transparent solid;
+    border-radius: 10px;
+    background-color: #232f3e;
+}
+
+.address-card{
+    border: 2px #eaeaea solid;
+    border-radius: 20px;
+}
+.address-card p {
+    user-select: none;
+}
+
+.account-info{
+    max-width: 400px;
+    border: 1px solid transparent;
+    box-shadow: 0 0 10px #282424;
+    border-radius: 10px;
+}
+
+.account-info p{
+    font-size: 1.2rem;
+}
+
+.submit-btn, .delete-btn, .submit-btn-disabled{
+    user-select: none;
+    border: 2px transparent solid;
+    background-color: #232f3e;
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delete-btn{
+    width:32px;
+    border-radius: 50%;
+}
+
+.submit-btn{
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+.submit-btn-disabled{
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background:#fee4c3;
+    color: #707473;
+}
+
+.submit-btn:hover, .delete-btn:hover{
+    border: 2px #232f3e solid;
+    background-color: #febd69;
+    color: #282424;
+}
+
+.submit-btn:active, .delete-btn:active{
+    border: 2px solid #707473;
+    background:#fee4c3;
+    color: #707473;
+}
+
+.close-btn{
+    display: flex;
+    align-items: top;
+    background-color: transparent;
+    color: #141414;
+    border-radius: 50%;  
+    font-size: 26px;
+    border: 2px transparent solid;
+}
+
+.close-btn:hover{
+    color: #636262;
+}
+
+.submit-btn:hover{
+    font-weight: 900;
+}
+
+.logout-btn{
+    margin-left: 20px;
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+.line{
+    border-top: 1px solid #acacac;
+    /* margin: 0 -20px; */
+}
+
+.add-card-container{
+    display: flex;
+    gap: 10px;
+}
+
+.add-card-btn{
+    margin-left: 10px;
+    border: none;
+    background-color:transparent;
+}
+
+.card-icon svg{
+    font-size: 30px;
+}
+
+.popup-anchor{
+    font-size: 12px;
+}
+.back-link{
+    margin-left: 20px;
+}
+
+.popup-anchor span, .back-link{
+    font-size: 16px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.popup-anchor span:hover, .back-link:hover{
+    font-size: 16px;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.custom-modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-modal{
+    width: 600px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px #282424;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.modal-title{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.payment-list{
+    max-width: 800px;
+    border: 2px #acacac solid;
+    border-radius: 20px 20px 0 0 ;
+    box-shadow: 0 0 30px #282424;
+}
+.payment-list p{
+    margin-bottom: 0;
+}
+.payment-list-header{
+    background-color: #eaeaea;
+    border-radius: 20px 20px 0 0 ;
+}
+.payment-list-footer{
+    background-color: #eaeaea;
+    border-top: 1px solid #acacac;
+}
+.payment-list h5, .payment-list h4{
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+.acc-order{
+    border: 1px solid #acacac;
+    border-radius: 15px;
+    margin-top:32px
+}
+.acc-order p{
+    margin-bottom: 0;
+    font-size: 16px;
+}
+.acc-order-header{
+    border-radius: 15px 15px 0 0;
+    background-color: #eaeaea;
+    border-bottom: 1px solid #acacac;
+}
+.acc-order-body{
+    background-color: white;
+    border-bottom: 1px solid#acacac;
+}
+.acc-order-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.acc-order-footer{
+    height: 50px;
+    border-radius: 0 0 15px 15px;
+    background-color: #eaeaea;
+}
+
+@media only screen and (max-width: 600px) {
+    .custom-modal{
+        width: 300px;
+    }
+    .payment-list h3, .payment-list h4{
+        text-align: center;
+    }
+    .acc-order-id{
+        display: none;
+    }
+  }
+
+  @media only screen and (min-width:1300px) {
+    .acc-order-page{
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+  }
+  
+
+/* #febd69 orange
+#fafafa white
+#232323 black
+#282424 lighter black
+#232f3e dark blue */

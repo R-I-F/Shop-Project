@@ -1,0 +1,40 @@
+*, *::before, *::after{
+  box-sizing: border-box; 
+}
+
+html body{
+  margin: 0;
+  font-family: "inter", sans-serif;
+}
+body{
+  
+}
+
+
+
+.site-container{
+  position: relative;
+}
+
+.shop-section-container{
+  position: relative;
+  z-index: 1;
+}
+
+.shop-section{
+  position: relative;
+  overflow-y: auto;
+  /* min-height: 100vh; */
+}
+
+
+.shop-page{
+  border: 2px transparent red;
+}
+
+
+
+
+.loading-icon{
+  margin: 50px auto;
+}

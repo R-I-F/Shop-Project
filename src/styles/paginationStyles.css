@@ -1,0 +1,43 @@
+/* PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS PAGE NUMBERS */
+
+.page-numbers-container{
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+  }
+  
+  .page-numbers{
+    display: inline-flex;
+    align-items: center;
+    border: 2px #d9dddd solid;
+    border-radius: 10px;
+  }
+  .page-numbers-number, .page-numbers-dots{
+    width:50px;
+    text-align: center;
+  }
+  .page-numbers-number:hover{
+    cursor: pointer;
+  }
+  
+  .page-numbers-number p, .page-numbers-dots p{
+    padding: 10px;
+    margin: 0;
+    pointer-events: none;
+  }
+  
+  .page-numbers-btn{
+    border: 2px transparent solid;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding:10px 15px;
+    cursor: pointer;
+  }
+  .page-numbers-btn p{
+    margin: 0;
+    pointer-events: none;
+  }
+  .page-numbers-btn-i{
+    pointer-events: none;
+  }
