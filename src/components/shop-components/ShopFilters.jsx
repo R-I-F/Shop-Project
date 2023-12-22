@@ -218,7 +218,7 @@ export default function ShopFilters({categoriesId, setCategoriesId, priceFilter,
     }
 
     if(loading){
-      return (<div className="col-2  shop-filters-loading"></div>)
+      return (<div className=""></div>)
    }
     else if(!loading){
        return filterEl()

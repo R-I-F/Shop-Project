@@ -1,16 +1,13 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useLocation, useSearchParams } from "react-router-dom" 
-import { categoriesContext } from "../CategoriesContext.jsx";
 import AccountBar from "./AccountBar.jsx";
+import CategoryDropDown from "./CategoryDropDown.jsx";
 import  "../../styles/navBarStyles.css"
 import { fireBaseContext } from "../../FireBase/FireBaseProvider.jsx";
 
 
-function NavBar(){
-
-    const [dropDown, setDropDown] = React.useState(false)
-    const categories = useContext(categoriesContext)
-
+function NavBar({isCatDropDown, setIsCatDropDown}){
+   
     const isUserSignedIn = React.useContext(fireBaseContext).isUserSignedIn
 
     const location = useLocation()
@@ -18,20 +15,8 @@ function NavBar(){
     const [searchParams, setSearchParams] = useSearchParams()
     const pageFilter = searchParams.get("page")
     
-
-    const listItems =  categories?.length?
-    categories.map((item, index)=>{
-        return(               
-            <li 
-            className="" 
-            href="#"
-            key= {`category + ${index}`}
-            >   <Link className="" >
-                    {item}
-                </Link>
-            </li>
-        )
-    }):null
+ 
+    
     const linkClassNames = "custom-link"
 
     const accountPageLinkEl = isUserSignedIn?(
@@ -50,8 +35,14 @@ function NavBar(){
             >Account</Link>
     )
 
-    function handleDropDown(){
-    setDropDown(prev=>!prev)
+    function handleCatDropDown(){
+    setIsCatDropDown(prev=>!prev)
+    }
+
+    function categoryDropDownEl(){
+        if(isCatDropDown){
+            return <CategoryDropDown/>
+        }
     }
 
     return (
@@ -65,7 +56,7 @@ function NavBar(){
                     <div className="col-sm-2 px-0 my-1">
                         <button 
                         className={linkClassNames}
-                        onClick = {()=>handleDropDown()}
+                        onClick = {()=>handleCatDropDown()}
                         >Categories</button> 
                         {/* a button that shows a dropdown of categories with links to their shop query pages */}
                     </div>
@@ -95,11 +86,9 @@ function NavBar(){
                         {accountPageLinkEl}
                     </div>
                 </nav>
-                {dropDown?
-                <ul className="custom-list">
-                    {listItems}
-                </ul>:<div></div>}
+                
             </div>
+            {categoryDropDownEl()}
         </div>
     )
 }

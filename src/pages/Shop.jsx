@@ -9,7 +9,7 @@ import ShopFilters from "../components/shop-components/ShopFilters";
 import Banner from "../components/Banner/Banner.jsx"
 import { fireBaseContext } from "../FireBase/FireBaseProvider.jsx";
 
-export default function Shop ({cartItems, setCartItems}){
+export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatDropDown}){
     
   const [loading, setLoading] = React.useState(false)
   const [products, setProducts] = React.useState([]) // products array that are displayed on the page
@@ -52,6 +52,7 @@ export default function Shop ({cartItems, setCartItems}){
       }
       setproductsDataLength(tempArr)
     })
+    setIsCatDropDown(false)
   },[offset,searchParams])
 
   React.useEffect(()=>{
@@ -193,22 +194,31 @@ export default function Shop ({cartItems, setCartItems}){
         )
       }
     }
-    else return (
-      <ReactLoading 
-        type="spin" 
-        color="#141414"
-        className="loading-icon"
-        width={"15%"}
-        height={"15%"}/>
-    )
+    else {
+      return (
+      <div className='col-12'>        
+        <ReactLoading 
+          type="spin" 
+          color="#141414"
+          className="loading-icon"
+          width={"15%"}
+          height={"15%"}/>
+      </div>
+    )}
   }
 
   const screenSizeClass = ()=>{
-    if(!isSmallScreen){ // if wide screens
-      return 'col-10 shop-page'
-    }
-    else if(isSmallScreen){
+    if(loading){
       return 'col-12 shop-page'
+    }
+    else if(!loading){
+      if(!isSmallScreen){ // if wide screens
+        console.log('not loading and wide screen')
+        return 'col-10 shop-page'
+      }
+      else if(isSmallScreen){
+        return 'col-12 shop-page'
+      }
     }
   }
         

@@ -19,6 +19,7 @@ export default function App() {
   const storedCartItems = localStorage.getItem("cart");
   const initialCartItems = storedCartItems ? JSON.parse(storedCartItems) : []
   const [cartItems, setCartItems] = React.useState(initialCartItems);
+  const [isCatDropDown, setIsCatDropDown] = React.useState(false)
   // cartItems initializes from local storage or as an empty object.
 
   React.useEffect(()=>{ // this effect sets cartItems array to local storage under the key of "cart"
@@ -32,13 +33,20 @@ export default function App() {
     <BrowserRouter>
       <Routes>   
 
-        <Route element={<HomePageLayout/>}>
+        <Route element={
+        <HomePageLayout
+          isCatDropDown = {isCatDropDown}
+          setIsCatDropDown = {setIsCatDropDown}
+          />
+        }>
 
           <Route index element={<AddSlider/>}/>
           <Route path='/shop' element={
             <Shop
             cartItems = {cartItems}
-            setCartItems = {setCartItems}            
+            setCartItems = {setCartItems}
+            isCatDropDown = {isCatDropDown}
+            setIsCatDropDown = {setIsCatDropDown}
             />}/>
           <Route path='/shop/:id' element={
             <SingleProduct
