@@ -61,9 +61,7 @@
     border: 2px solid white ;
 }
 .modal-close-btn-container , .cart-modal-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 .cart-modal-btn:hover , .modal-close-btn:hover{
     background-color: #febd69;
