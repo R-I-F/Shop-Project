@@ -161,7 +161,7 @@ function CartModal({cartItems, setCartItems, isNavbarOn}){
     </div>
     const cartModalEl = (
         <>
-            <div className="modal-close-btn-container">
+            <div className="modal-close-btn-container d-flex justify-content-center align-items-center">
                 <span>Hide cart</span>
                 <button 
                 className="modal-close-btn mt-2"
@@ -188,7 +188,7 @@ function CartModal({cartItems, setCartItems, isNavbarOn}){
     return(
         <div>
             <button 
-            className="cart-modal-btn"
+            className="cart-modal-btn d-flex justify-content-center align-items-center"
             onClick={()=>handleShowModal()}>
                 <AiOutlineShoppingCart/>
             </button>
