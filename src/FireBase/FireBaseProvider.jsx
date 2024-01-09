@@ -35,6 +35,17 @@ export default function FireBaseProvider({children}){
   const [isUserSignedIn, setIsUserSignedIn] = React.useState(false) 
   const[count, setCount] = React.useState(0)
   const [isUserDisplayName, setIsUserDisplayName] = React.useState(false)
+  const [categories, setCategories] = React.useState([]);
+  const [productsInDb, setProductsInDb] = React.useState([])
+
+  React.useEffect(() => {
+    getAllDocsInDb(0)
+    .then((res) => {
+      setProductsInDb(res)
+      return res.map((item)=>{return item.category.name})})
+    .then(data=>{
+      setCategories([...new Set(data)])})
+  }, []);
   
   const firebaseConfig = {
     apiKey: "AIzaSyAzPEh_tl-SY0Sql4i5s5P-QNGZdyMbNBc",
@@ -911,6 +922,19 @@ export default function FireBaseProvider({children}){
     return tempArr
   }
 
+  async function getAllCategoriesInDb(){
+    
+    let tempArr = []
+    const productsRef = collection(db, "categories")
+    const querySnapshot = await getDocs(productsRef);
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      data.id = doc.id;
+      tempArr.push(data);
+    })
+    return tempArr
+  }
+
   async function getSpecificDocInDb(id){
     const docRef = doc(db, "all-products", id)
     const docSnap = await getDoc(docRef)
@@ -922,6 +946,15 @@ export default function FireBaseProvider({children}){
   }
     return(
       <fireBaseContext.Provider value={{
+        auth,
+        isUserSignedIn,
+        userData,
+        count,
+        userData,
+        isUserDisplayName,
+        userFireStoreData,
+        categories,
+        productsInDb,
         getPageinatedDocsInDb, 
         getAllDocsInDb, 
         getAllDocsInDbForPagination, 
@@ -929,25 +962,19 @@ export default function FireBaseProvider({children}){
         createNewUserWithEmailAndPassword,
         signInWithEmailAndPassword,
         signOut,
-        auth,
         signInUsingGoogle,
-        isUserSignedIn,
-        userData,
         profileNameUpdate,
         signOutUser,
-        count,
         setCount,
-        userData,
         setUserData,
-        isUserDisplayName,
         setIsUserDisplayName,
-        userFireStoreData,
         addUserAddress,
         updateUserAddress,
         addUserPaymentInfo,
         updateUserPaymentInfo,
         addUserOrder,
-        updateUserOrder
+        updateUserOrder,
+        getAllCategoriesInDb
         }}>
       {children}
       </fireBaseContext.Provider>

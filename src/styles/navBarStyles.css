@@ -3,7 +3,7 @@
   top:0;
   right: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 4;
 }
 
 .custom-link{
@@ -73,8 +73,19 @@ a{
   color: #eaeded;
 }
 
+.web-title-container{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.web-title-container button{
+  display: none;
+}
+
 .web-title{
   font-family: 'Pacifico', cursive;
+  margin-bottom: 0;
 }
 
 .user-info{
@@ -146,9 +157,25 @@ a{
 }
 
 @media only screen and (max-width: 576px) {
-.addressEl{
-  display: none;
-}
+  .acc-bar-firstname{
+    display: none;
+  }
+
+  .addressEl{
+    display: none;
+  }
+  .web-title-container button{
+    display: flex;
+    align-items: center;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 2rem;
+  }
+  .custom-link{
+    justify-content: left;
+    padding-left: 10px;
+  }
 }
 
 @media (min-width: 425px) { /* applies to only wide screens*/

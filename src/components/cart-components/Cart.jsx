@@ -91,11 +91,11 @@ function Cart({cartItems, setCartItems, product, setProduct, setIsCartItemsClear
                     src={`/${item.images[0]}`}
                     className="item-cart-image"/>
                 </div>
-                <div className="col-3">
+                <div className="col-5">
                     <p
                     className="item-cart-title">{item.title}</p>
                 </div>
-                <div className="col-5 qty-container">  
+                <div className="col-2 qty-container">  
                     <div className="qty">
                         <button
                         className="qty-container-btn"
@@ -107,11 +107,12 @@ function Cart({cartItems, setCartItems, product, setProduct, setIsCartItemsClear
                         id="subtract-btn"
                         onClick={()=>handleClick(event)}
                         >-</button>
-                        <p className="qty-value">Qty:{item.quantity}</p>
                     </div>          
                 </div>
-                <p
-                className="col-2 item-cart-price">Total: {item.price*item.quantity}</p>
+                <div className="col-3">                    
+                <p className="qty-value">Qty:{item.quantity}</p>
+                <p className="item-cart-price">Total: {item.price*item.quantity}</p>
+                </div>
             </div>
         )
     }):null
@@ -123,12 +124,14 @@ function Cart({cartItems, setCartItems, product, setProduct, setIsCartItemsClear
 
     const buyLinkBtnEl = isUserSignedIn?(
     <Link 
+    className="buy-btn-link"
     to='/order'
     state={{cartItems, grandTotal}}
     >
         Buy Now
     </Link>):(
     <Link 
+    className="buy-btn-link"
     to='/login'
     state={{
         pathname:location.pathname

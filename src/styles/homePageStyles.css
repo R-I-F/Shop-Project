@@ -1,0 +1,70 @@
+.homepage-container{
+    padding: 20px 0;
+    background: linear-gradient(to bottom, #eaeaea, #f5f5dc);
+}
+
+.ad-space{
+    border: 2px #febd69 solid;
+    height: 200px;
+    max-width: 700px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-container{
+    background-color: #fafafa;
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    width: max-content;
+    position: relative;
+    overflow: hidden;
+}
+.carousel-container h3{
+    font-family: 'Roboto';
+}
+.carousel{
+    display: flex;
+    gap: 20px;    
+}
+.temp-product{
+    width: 200px;
+    height: 400px;
+    background: pink;
+}
+.carousel-next-icon{
+    right: 0;
+    z-index: 2;
+}
+.carousel-prev-icon{
+    left: 0;
+    z-index: 2;
+}
+.carousel-next-icon,
+.carousel-prev-icon {
+  position: absolute;
+  cursor: pointer;
+  font-size: 60px;
+  font-style: normal;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* .carousel-product-card{
+    height: 540px;
+} */
+
+/* @media only screen and (min-width:1200px) {
+    .carousel-product-card{
+        height: 540px;
+    }
+  } */
+
+/* #febd69 orange
+#fafafa white
+#232323 black
+#282424 lighter black
+#232f3e dark blue 
+#eaeaea light grey
+#acacac dark grey
+*/

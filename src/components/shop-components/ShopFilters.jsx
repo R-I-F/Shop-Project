@@ -1,12 +1,12 @@
 import React from "react"
-import { categoriesContext } from "../CategoriesContext"
+import { fireBaseContext } from "../../FireBase/FireBaseProvider";
 import { v4 as uuidv4 } from "uuid"
 import "../../styles/shopFiltersStyles.css"
 import { MdOutlineFilterList } from "react-icons/md";
 
 
 export default function ShopFilters({categoriesId, setCategoriesId, priceFilter, setPriceFilter, handleSubmitBtn, loading, order, setOrder, isSmallScreen, showFilters, setShowFilters}){
-    const cat = React.useContext(categoriesContext)
+    const cat = React.useContext(fireBaseContext).categories
     const categories = ()=>{
         return cat.map((item)=>{
             if(item==="Health and Beauty"){
@@ -134,7 +134,6 @@ export default function ShopFilters({categoriesId, setCategoriesId, priceFilter,
     </div>
         
     function handleChange(e){
-        console.log(e.target.id)
         if(e.target.name === "categories"){
             categoriesId === (e.target.id) ? setCategoriesId(""):
             setCategoriesId(e.target.id)

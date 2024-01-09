@@ -6,12 +6,11 @@ import { fireBaseContext } from "../../FireBase/FireBaseProvider";
 import { Link } from "react-router-dom";
 
 
-function CartModal({cartItems, setCartItems}){
+function CartModal({cartItems, setCartItems, isNavbarOn}){
 
     const [showModal, setShowModal] = React.useState(false)
     const [grandTotal, setGrandTotal] = React.useState()
     const isUserSignedIn = React.useContext(fireBaseContext).isUserSignedIn
-
 
     React.useEffect(()=>{ // calculate grandtotal value
         if(cartItems?.length){
@@ -41,12 +40,14 @@ function CartModal({cartItems, setCartItems}){
 
     const buyLinkBtnEl = isUserSignedIn?(
         <Link 
+        className="buy-btn-link"
         to='/order'
         state={{cartItems, grandTotal}}
         >
             Buy Now
         </Link>):(
         <Link 
+        className="buy-btn-link"
         to='/login'
         state={{
             pathname:location.pathname
@@ -128,11 +129,11 @@ function CartModal({cartItems, setCartItems}){
                     src={`/${item.images[0]}`}
                     className="item-cart-image"/>
                 </div>
-                <div className="col-3">
+                <div className="col-5">
                     <p
                     className="item-cart-title">{item.title}</p>
                 </div>
-                <div className="col-5 qty-container">  
+                <div className="col-2 qty-container">  
                     <div className="qty">
                         <button
                         className="qty-container-btn"
@@ -144,11 +145,12 @@ function CartModal({cartItems, setCartItems}){
                         id="subtract-btn"
                         onClick={()=>handleClick(event)}
                         >-</button>
-                        <p className="qty-value">Qty:{item.quantity}</p>
                     </div>          
                 </div>
-                <p
-                className="col-2 item-cart-price">Total: {item.price*item.quantity}</p>
+                <div className="col-3">                    
+                <p className="qty-value">Qty:{item.quantity}</p>
+                <p className="item-cart-price">Total: {item.price*item.quantity}</p>
+                </div>
             </div>
         )
     }):null
@@ -157,8 +159,8 @@ function CartModal({cartItems, setCartItems}){
         <div className="line-break m-2"></div>
         <p className="cart-text m-2">GrandTotal: {grandTotal} EGP</p>
     </div>
-
-    const cartModal = showModal?(<div className="cart-modal">
+    const cartModalEl = (
+        <>
             <div className="modal-close-btn-container">
                 <span>Hide cart</span>
                 <button 
@@ -171,7 +173,17 @@ function CartModal({cartItems, setCartItems}){
             {grandTotal&&grandTotalEl}
             {buyBtnEl()}
             {clearBtnEl()}
-        </div>):null
+        </>
+        )
+    const cartModal = showModal?isNavbarOn?(
+        <div className="cart-modal-navon">
+            {cartModalEl}
+        </div>
+        ):(
+        <div className="cart-modal-navoff">
+            {cartModalEl}
+        </div>
+        ):null
 
     return(
         <div>

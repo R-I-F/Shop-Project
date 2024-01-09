@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet, Navigate, useLocation } from 'react-router-dom'
 import { fireBaseContext } from '../FireBase/FireBaseProvider'
+import BreadCrump from '../components/BreadCrump'
 
 function AccountPageLayout(){
     const isUserSignedIn = React.useContext(fireBaseContext).isUserSignedIn
@@ -8,10 +9,23 @@ function AccountPageLayout(){
     const linksClass = `account-page-custom-links`
     const activeClass = {background:"#febd69", color: "#232323", fontWeight: "900"}
 
+    const links=['/','/account']
+    const linkNames=["Homepage", "Account"]
+    const title = 'Account'
+    const color = '#fafafa'
+    const imgPath = '/account-photo.jpg'
+    const sentence = ''
 
     if(isUserSignedIn){        
         return (
             <div className='account-page'>
+                <BreadCrump
+                title={title}
+                sentence={sentence}
+                color={color}
+                links={links}
+                linkNames={linkNames}
+                imgPath={imgPath}/>
                 <nav className='ms-2 mt-2'>
                     <div className='row g-2 justify-content-center'>                    
                         <div className='col-sm-2'>                    

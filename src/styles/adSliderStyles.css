@@ -5,10 +5,12 @@
   
   .next-icon{
     right: 0;
+    z-index: 2;
   }
   
   .prev-icon{
     left: 0;
+    z-index: 2;
   }
   
   .next-icon,
@@ -25,38 +27,96 @@
     justify-content: center;
   }
   .ad-card{
+    width: 100%;
     user-select: none;
-    max-width: 500px;
-    height: auto;
-    padding: 20px;
+    padding: 0;
     transition: transform 0.5s;
     background: transparent;
     text-align: left;
   }
   
-  .ad-title-name{}
-  .ad-title-discount{}
-  .ad-title-description{}
-  .ad-title-card{}
-  .ad-title-brand{}
+  .ad-info{
+    position: absolute;
+    top: 10%;
+    left:10%;
+    z-index: 3;
+    color: black;
+    text-shadow: 0 0 4px #232323;
+  }
+  .ad-info-name{}
+  .ad-info-discount{}
+  .ad-info-description{}
+  .ad-info-card{}
+  .ad-info-brand{}
   
-  .ad-title-name,
-  .ad-title-discount,
-  .ad-title-description,
-  .ad-title-card,
-  .ad-title-brand{
+  .ad-info-name,
+  .ad-info-discount,
+  .ad-info-description,
+  .ad-info-card,
+  .ad-info-brand{
    margin-top:0;
    margin-bottom:0;
   }
   .custom-row-height-1{
-    height: auto
+    height: auto;
   }
   
   .custom-row-height-2{
     height: 250px;
   }
   
-  .ad-img{
+  .ad-img-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .ad-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
+
+  .ad-white-layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @media screen and (max-width: 576px) {
+    .ad-img-container{
+      height: 200px;
+    }
+
+    .ad-info-name, .prev-icon, .next-icon{
+      font-size: 22px;
+    }
+
+    .ad-info-discount,
+    .ad-info-description,
+    .ad-info-brand{
+      font-size: 18px;
+    }
+
+    .ad-info-card{
+      font-size: 12px;
+    }
+
+  }
+
+/* #febd69 orange
+#fafafa white
+#232323 black
+#282424 lighter black
+#232f3e dark blue 
+#eaeaea light grey
+#acacac dark grey
+*/

@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { fireBaseContext } from "../../FireBase/FireBaseProvider";
 
 function AccountOrders(){
     const userFireStoreData = React.useContext(fireBaseContext).userFireStoreData
-    
+    const location = useLocation()
     const ordersArr = userFireStoreData?.orders
     const navigate = useNavigate()
     /* 
@@ -24,7 +24,7 @@ function AccountOrders(){
     }
 
     function handleBuyClick(id){
-        navigate(`/shop/${id}`)
+        navigate(`/shop/${id}`,{state:{pathname:location.pathname}})
     }
 
     function handleReviewClick(){

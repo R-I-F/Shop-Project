@@ -281,7 +281,7 @@ function handlePageClicked(e){
                   onClick={()=>handlePageClicked(event)}
                   id="previous">                        
                       <BiLeftArrow className="page-numbers-btn-i"/>
-                      <p>Previous</p>
+                      <p className="pagination-label">Previous</p>
                   </div>
                   {filteredEditedPageArrEl}
                   <div 
@@ -291,7 +291,7 @@ function handlePageClicked(e){
                   onMouseLeave={()=>handleMouseLeave()}
                   onClick={()=>handlePageClicked(event)}
                   id="next">                        
-                      <p>Next</p>
+                      <p className="pagination-label">Next</p>
                       <BiRightArrow className="page-numbers-btn-i"/>
                   </div>                
                 </div>

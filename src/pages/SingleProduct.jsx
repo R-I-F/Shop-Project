@@ -37,8 +37,6 @@ function SingleProduct({cartItems, setCartItems}){
         }
     },[params.id, isCartItemsCleared])
 
-    
-
     React.useEffect(()=>{ // this effect adds the current product to cartItems array state
         const productExistsInCart = cartItems.filter((item)=>{return item.id === params.id}).length?true:false
         if(product?.quantity>0){
@@ -67,8 +65,10 @@ function SingleProduct({cartItems, setCartItems}){
     }
 
     return product?(
-        <div>
+        <div className="single-product-page-container">
+            
             <div className="single-product-page row">
+
                 <ProductImgs
                 imgArr = {product.images}/>
 

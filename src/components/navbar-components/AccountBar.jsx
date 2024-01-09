@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { fireBaseContext } from "../../FireBase/FireBaseProvider";
 import { ImLocation2 } from "react-icons/im";
+import { BsList } from "react-icons/bs";
 
-function AccountBar({location, pageFilter}){
+function AccountBar({location, pageFilter, showNavbar}){
 
     const userData = React.useContext(fireBaseContext).userData  
     const isUserDisplayName = React.useContext(fireBaseContext).isUserDisplayName
@@ -19,9 +20,10 @@ function AccountBar({location, pageFilter}){
         signOutUser()
     }
 
+
     const greetingEl = userData?isUserDisplayName?(
         <div className={userInfoClassNames}> 
-            <p className="">Hello, {firstName}</p>
+            <p className="acc-bar-firstname">Hello, {firstName}</p>
             <img className="user-img" src="/default-profile.svg"/>           
             <button
                 className='logout-btn'
@@ -31,7 +33,7 @@ function AccountBar({location, pageFilter}){
     ):(
         <div className={userInfoClassNames}>
             <div className="user-info-text">                
-                <p className="mb-0">Hello, {firstName}</p>
+                <p className="mb-0 acc-bar-firstname">Hello, {firstName}</p>
                 <p className="mb-0 user-request">Please Complete you're profile info!</p>
             </div>
             <img className="user-img" src="/default-profile.svg"/>   
@@ -59,7 +61,7 @@ function AccountBar({location, pageFilter}){
     const addrEl = ()=>{
         if(isUserAddr && isUserSignedIn){
             return(
-                <div className="col-md-2 col-sm-2 col-2 my-1 addressEl">
+                <div className="col-sm-2 my-1 addressEl">
                     <div>
                         <ImLocation2/>
                     </div>
@@ -75,7 +77,11 @@ function AccountBar({location, pageFilter}){
     return(
         <div className="container-fluid custom-acc-bar">
             <div className="row py-2">
-                <div className="col-md-3 col-sm-3 col-4 my-1">                    
+                <div className="col-md-3 col-sm-3 col-6 my-1 web-title-container">  
+                    <button
+                    onClick={()=>showNavbar()}>
+                        <BsList/>                  
+                    </button>
                     <h3 className="web-title">My Shop</h3>
                 </div>
                 {addrEl()}

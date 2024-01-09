@@ -5,15 +5,14 @@
 html body{
   margin: 0;
   font-family: "inter", sans-serif;
+  min-height: 100vh;
 }
-body{
-  
-}
-
-
 
 .site-container{
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .shop-section-container{
@@ -21,20 +20,112 @@ body{
   z-index: 1;
 }
 
+
 .shop-section{
   position: relative;
   overflow-y: auto;
-  /* min-height: 100vh; */
 }
-
-
-.shop-page{
-  border: 2px transparent red;
-}
-
-
-
 
 .loading-icon{
   margin: 50px auto;
+}
+
+.bc-container {
+  position: relative;
+  height: 280px ;
+  width: 100% ;
+  overflow: hidden ;
+}
+
+.bc-img {
+  width: 100% ;
+  height: 100% ;
+  object-fit: cover ;
+  object-position: 50% 42% ;
+}
+
+.bc-dark-layer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bc-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.bc-title{
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 36px;
+  font-weight: 900;
+}
+.bc-sentence{
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fafafa;
+}
+
+.bc-links{
+  text-align: center;
+  color: #fafafa;
+  font-size: 12px;
+}
+
+.active{
+  text-decoration: underline;
+}
+
+.web-footer{
+  margin-top: auto;
+  background: #232323;
+  color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  border-top: 1px solid #acacac;
+  height: 50px;
+  box-shadow: 1px -1px 10px #acacac;
+  z-index: 5;
+}
+.summary{
+  max-width: 360px;
+  padding: 15px;
+  border: 1px solid #acacac ;
+  margin: 15px auto
+}
+.socialmedia-links{
+  width: max-content;
+  margin: auto auto 0 auto;
+  padding: 0 20px 5px;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  color: black;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 576px) {
+  .bc-title{
+    margin-top: 10px;
+    font-size: 28px;
+  }
+  .bc-container {
+    height: 150px ;
+  }
 }

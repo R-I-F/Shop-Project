@@ -6,48 +6,47 @@ import {GrNext, GrPrevious} from "react-icons/gr"
 
 
 
-export default function AddSlider (){
+export default function AddSlider({ad, setAd}){
 
     const [currentSlide, setCurrentSlide] = React.useState(0)
-    const [ad, setAd] = React.useState([])
+    
+
     
     const slideWidth = 300; 
     const sliderWidth = slideWidth * ad.length;
   
     const nextSlide = function(){
-        setCurrentSlide((prev)=>{return(prev+1)%4})
+        setCurrentSlide((prev)=>{return(prev+1)%5})
     }
 
     function prevSlide(){
-        setCurrentSlide((prev)=>{return((prev-1+4)%4)})
+        setCurrentSlide((prev)=>{return((prev-1+5)%5)})
     }
 
     const translateValue = -currentSlide * slideWidth;
 
-    React.useEffect(()=>{
-        fetch('https://api.escuelajs.co/api/v1/categories')
-            .then(res=>res.json())
-            .then(data=>setAd(data))
-    },[0])
-
     const adArrEl = [
-        <AdCard 
+            <AdCard 
             ad = {ad}
             currentSlide = {currentSlide}
             translateValue = {translateValue}
             n = {0}   
-            discountValue={20}    
-            description = "Summer Shorts" 
-            brand="SunChill Shorts" 
+            discountValue={17}    
+            description = "IPhone 14-proMax" 
+            brand="Apple" 
+            color="black"
+            fontShadow = "#232323"
             />,
             <AdCard 
             ad = {ad}
             currentSlide = {currentSlide}
             translateValue = {translateValue}
             n = {1}   
-            discountValue={17}    
-            description = "IPhone 14-proMax" 
-            brand="Apple" 
+            discountValue={20}    
+            description = "Summer Shorts" 
+            brand="SunChill Shorts" 
+            color="black"
+            fontShadow = "#232323"
             />,
             <AdCard 
             ad = {ad}
@@ -55,8 +54,21 @@ export default function AddSlider (){
             translateValue = {translateValue}
             n = {2}   
             discountValue={23}    
-            description = "Caps" 
-            brand="CapCulture" 
+            description = "Furniture" 
+            brand="IKEA" 
+            color="black"
+            fontShadow = "#232323"
+            />,
+            <AdCard 
+            ad = {ad}
+            currentSlide = {currentSlide}
+            translateValue = {translateValue}
+            n = {3}   
+            discountValue={25}    
+            description = "Skin-care" 
+            brand="L'Oréal" 
+            color="black"
+            fontShadow = "#232323"
             />,
             <AdCard 
             ad = {ad}
@@ -64,9 +76,11 @@ export default function AddSlider (){
             translateValue = {translateValue}
             n = {4}   
             discountValue={10}    
-            description = "Hoodies" 
-            brand="UrbanChill" 
-            />
+            description = "Notebooks" 
+            brand="Jumbo" 
+            color="black"
+            fontShadow = "#232323"
+            />,
     ]
     
     return (

@@ -1,0 +1,66 @@
+.about-us-page{
+    height: 100%;
+}
+
+.content{
+    width: 100%;
+    font-family: 'inter';
+    font-weight: 700;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    text-align: justify;
+    color: black;
+}
+
+.about-us-title{
+    text-align: center;
+    text-shadow: 0 0 0.3rem #232323;
+    font-size: 40px;
+}
+.overview-content, .team-content, .testimonial-content{
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(234, 234, 234, 0.5);
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+.overview-content{
+    max-width: 600px;
+}
+.team-content{
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+/* .team-info{
+    margin: 0 auto;
+} */
+.team-name{
+    text-shadow: 0 0 0.3rem #232323;
+}
+.team-role{
+    width: 230px;
+    font-style: italic;
+}
+.team-img-container{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.drop-down-btn{
+    display: flex;
+    align-items: bottom;
+    border: none;
+    background: transparent;
+}
+
+

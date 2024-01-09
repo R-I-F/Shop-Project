@@ -43,7 +43,7 @@
   background: #eaeaea;
 }
 
-@media (min-width: 425px) {
+@media (min-width: 425px) { /* applies to only wide screens*/
   .filters-dropdown{
     width: 300px;
     margin: 5px 0 0 20px;

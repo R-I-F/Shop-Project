@@ -41,3 +41,12 @@
   .page-numbers-btn-i{
     pointer-events: none;
   }
+
+  @media only screen and (max-width: 576px) {
+    .pagination-label{
+      display: none;
+    }
+    .page-numbers-dots{
+      display: none;
+    }
+  }

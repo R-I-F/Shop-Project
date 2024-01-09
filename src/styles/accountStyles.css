@@ -5,7 +5,9 @@
 }
 .account-page{
     background: linear-gradient(to bottom, #ffffff, #f5f5dc);
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 .account-page-custom-links{
     font-size: 14px;
@@ -37,6 +39,7 @@
 }
 
 .submit-btn, .delete-btn, .submit-btn-disabled{
+    
     user-select: none;
     border: 2px transparent solid;
     background-color: #232f3e;
@@ -46,11 +49,13 @@
     justify-content: center;
 }
 .delete-btn{
-    width:32px;
+    width:34px;
     border-radius: 50%;
 }
 
 .submit-btn{
+    margin-top: 10px;
+    padding: 7px 14px;
     border-radius: 5px;
     font-weight: 900;
 }
@@ -148,6 +153,7 @@
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 6;
 }
 
 .custom-modal{
@@ -233,10 +239,12 @@
         margin-right: 150px;
     }
   }
-  
 
 /* #febd69 orange
 #fafafa white
 #232323 black
 #282424 lighter black
-#232f3e dark blue */
+#232f3e dark blue 
+#eaeaea light grey
+#acacac dark grey
+*/

@@ -1,4 +1,4 @@
-.cart-modal{
+.cart-modal-navon, .cart-modal-navoff{
     width: 400px;
     background-color: #eaeaea;
     display: flex;
@@ -11,14 +11,20 @@
 }
 
 @media only screen and (max-width: 2000px){
-    .cart-modal{
+    .cart-modal-navon{
         margin-top: 105px;
     }
 }
 
 @media only screen and (max-width: 570px){
-    .cart-modal{
+    .cart-modal-navon{
+        width: 100%;
         margin-top: 250px;
+    }
+    .cart-modal-navoff{
+        width: 100%;
+        margin-top: 0;
+        top:65px;
     }
 }
 

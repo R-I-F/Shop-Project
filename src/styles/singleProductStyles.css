@@ -1,5 +1,6 @@
 /* single-product-page single-product-page single-product-page single-product-page single-product-page */
 
+
 .single-product-page{
   height: 100vh;
 }
@@ -13,9 +14,7 @@
   text-decoration: underline;
 }
 
-.single-product-page-imgs-container{
 
-}
 
 .product-img{
   width: 100%;
@@ -77,3 +76,13 @@
   background:#fee4c3;
   color: #707473;
 }
+
+@media (max-width: 576px) { /* applies to small screens*/
+  .single-product-page{
+    height: 100%;
+  }
+  .single-product-page-container{
+    padding-bottom: 20px;
+  }
+}
+

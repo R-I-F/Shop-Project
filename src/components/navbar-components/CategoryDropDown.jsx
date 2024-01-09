@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { categoriesContext } from "../CategoriesContext.jsx";
+import { fireBaseContext } from '../../FireBase/FireBaseProvider'
 
 function CategoryDropDown(){
-    const cat = React.useContext(categoriesContext)
+    const cat = React.useContext(fireBaseContext).categories
 
     const categories = ()=>{
         if(cat?.length){

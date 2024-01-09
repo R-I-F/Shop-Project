@@ -4,22 +4,22 @@ import Pagination from "../components/shop-components/Pagination";
 import CartModal from "../components/cart-components/CartModal.jsx";
 import { useSearchParams, Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import ReactLoading from "react-loading"
-import CategoriesContext from "../components/CategoriesContext";
 import ShopFilters from "../components/shop-components/ShopFilters";
 import Banner from "../components/Banner/Banner.jsx"
 import { fireBaseContext } from "../FireBase/FireBaseProvider.jsx";
 
-export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatDropDown}){
+export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatDropDown, isNavbarOn}){
     
   const [loading, setLoading] = React.useState(false)
   const [products, setProducts] = React.useState([]) // products array that are displayed on the page
   
-  const [categoriesId, setCategoriesId] = React.useState("")
   const [searchParams, setSearchParams] = useSearchParams()
   const [productsDataLength, setproductsDataLength] = React.useState([])
-
+  
+  const [categoriesId, setCategoriesId] = React.useState("") //controls categories filter radio
   const [priceFilter, setPriceFilter] = React.useState("") // controls price filter radio
-  const [order, setOrder] = React.useState([])  // controls orderby radio 
+  const [order, setOrder] = React.useState([])  // controls orderby radio
+
   const [priceArr, setPriceArr] = React.useState([]) // controls price search parameter
   
   
@@ -30,7 +30,7 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
   const navigate = useNavigate()
   const getPageinatedDocsInDb = React.useContext(fireBaseContext).getPageinatedDocsInDb
   const getAllDocsInDbForPagination = React.useContext(fireBaseContext).getAllDocsInDbForPagination
-  
+  // console.log(location.state)
   const pageFilter = searchParams.get("page")
   const categoriesFilter = searchParams.get("category")? searchParams.get("category"):""
   const minPriceFilter = searchParams.get("price_min")?searchParams.get("price_min"):""
@@ -56,6 +56,7 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
   },[offset,searchParams])
 
   React.useEffect(()=>{
+    // assigns the current priceFilter to price array which controls the search parameter query for price
     priceFilter === "0To500"?setPriceArr([1,500]):
     priceFilter === "500To1000"?setPriceArr([500,1000]):
     priceFilter==="1000To1500"?setPriceArr([1000,1500]):
@@ -73,16 +74,41 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
     return ()=>{window.removeEventListener("resize", handleResize)}
   },[])
 
-  React.useEffect(() => {
-    if (!products.length) {
-      const navigateToShopPage = () => {
-        setTimeout(() => navigate('/shop?page=1'), 3000);
-      };
-
-      navigateToShopPage(); // Call the function
-      clearAllFilters()
+  React.useEffect(() => { 
+    // when coming back from single products page checks the state and checks filtered radio elements
+    if(location?.state){
+      const {categoriesFilter, orderFilter, priceArr, results} = location.state
+      if(results==="no results"){
+        clearAllFilters()
+      }
+      else if(categoriesFilter&&priceArr&&orderFilter){
+        setCategoriesId(categoriesFilter)
+        setPriceFilter(`${priceArr[0]===1?0:priceArr[0]}To${priceArr[1]}`)
+        setOrder(orderFilter)
+      }
+      else if(categoriesFilter&&priceArr){
+        setCategoriesId(categoriesFilter)
+        setPriceFilter(`${priceArr[0]===1?0:priceArr[0]}To${priceArr[1]}`)
+      }
+      else if(categoriesFilter&&orderFilter){
+        setCategoriesId(categoriesFilter)
+        setOrder(orderFilter)
+      }
+      else if(priceArr&&orderFilter){
+        setPriceFilter(`${priceArr[0]===1?0:priceArr[0]}To${priceArr[1]}`)
+        setOrder(orderFilter)
+      }
+      else if(categoriesFilter){
+        setCategoriesId(categoriesFilter)
+      }
+      else if(orderFilter){
+        setOrder(orderFilter)
+      }
+      else if(priceArr){
+        setPriceFilter(`${priceArr[0]===1?0:priceArr[0]}To${priceArr[1]}`)
+      }
     }
-  }, [products]);
+  }, [location.state]);
 
   function handleSubmitBtn(event){
     event.preventDefault()
@@ -168,9 +194,11 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
           products.map((item)=>{
             return( 
                 <div 
-                className="col-xs-12 col-sm-6 col-md-4 col-lg-4 gy-2"
+                className="col-xs-12 col-sm-6 col-md-4 col-lg-4 gy-3"
                 key = {item.id}> 
                       <ProductCard
+                      cartItems={cartItems}
+                      setCartItems={setCartItems}
                       item = {item}  
                       offset={offset}     
                       categoriesFilter={categoriesFilter}
@@ -186,11 +214,18 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
       }
       else if(!products.length){
         return (
-          <Banner 
-          status ="error" 
-          title="We couldn't find any results matching your criteria" 
-          text="We will send you back to the shop page!" 
-        />
+          <div>            
+            <Banner 
+            status ="error" 
+            title="No results found."
+            text="We couldn't find any results matching your criteria" 
+            />
+            <Link 
+            to='/shop?page=1'
+            state={{results:"no results"}}
+            className="col-12 mb-0 ms-3 mt-1 back-link">
+            Back to shop</Link>
+          </div>
         )
       }
     }
@@ -213,7 +248,6 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
     }
     else if(!loading){
       if(!isSmallScreen){ // if wide screens
-        console.log('not loading and wide screen')
         return 'col-10 shop-page'
       }
       else if(isSmallScreen){
@@ -228,9 +262,9 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
         <CartModal
           cartItems = {cartItems} 
           setCartItems = {setCartItems}
-          /> 
-        <CategoriesContext>
-          <ShopFilters
+          isNavbarOn = {isNavbarOn}
+        /> 
+        <ShopFilters
           categoriesId = {categoriesId}
           setCategoriesId={setCategoriesId}
           priceFilter = {priceFilter}
@@ -242,25 +276,36 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
           isSmallScreen = {isSmallScreen}
           showFilters = {showFilters}
           setShowFilters = {setShowFilters}
-          /> 
-        </CategoriesContext>      
+        />
+             
         <div className={screenSizeClass()}>
-          <div 
-          className="products row gx-3"
-          >{productCardsEl()}</div>
+            <div className='bc-links'>
+              <NavLink
+              to='/'
+              >Homepage</NavLink>
+              <span>{` >> `}</span>
+              <NavLink
+              to='/shop?page=1'
+              className={(isActive)=>isActive?'active':''}
+              >Shop</NavLink>
+            </div>
+            <div 
+            className="products row gx-3"
+            >{productCardsEl()}
+          </div>
 
           <Pagination 
-          pageFilter={pageFilter}
-          categoriesFilter = {categoriesFilter}
-          priceFilter = {priceFilter}
-          setPriceFilter = {setPriceFilter}
-          priceArr = {priceArr}
-          setPriceArr = {setPriceArr}
-          setSearchParams={setSearchParams}
-          productsDataLength={productsDataLength}
-          offset = {offset}
-          orderFilter={orderFilter}
-          products={products}/>
+            pageFilter={pageFilter}
+            categoriesFilter = {categoriesFilter}
+            priceFilter = {priceFilter}
+            setPriceFilter = {setPriceFilter}
+            priceArr = {priceArr}
+            setPriceArr = {setPriceArr}
+            setSearchParams={setSearchParams}
+            productsDataLength={productsDataLength}
+            offset = {offset}
+            orderFilter={orderFilter}
+            products={products}/>
         </div>
       </div>
     </div>
