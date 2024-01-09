@@ -96,7 +96,7 @@ export default function ProductCard({item, offset, categoriesFilter, minPriceFil
                         <div className="col-9">
                             <p className="product-card-price-p1 ">EGP <span className="product-card-price-p2">{item.price}</span></p>
                         </div>
-                        <div className="col-3">
+                        <div className="col-3 d-flex">
                             <AiOutlineShoppingCart 
                             className="product-card-price-cart"
                             style = {addCart&&{fill:"red"}}
