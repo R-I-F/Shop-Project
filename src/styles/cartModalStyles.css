@@ -29,6 +29,13 @@
     }
 }
 
+.cart-modal-btn, .modal-close-btn{
+    border: 2px solid transparent;
+    width: 64px; /* 64px */
+    height: 64px; /* 64px */
+    border-radius: 50%;
+    font-size: 32px;
+}
 
 .cart-modal-btn{
     position:fixed;
@@ -37,15 +44,6 @@
     background-color: #232f3e;
     color: #eaeaea;
     z-index: 2;
-}
-    
-    
-.cart-modal-btn, .modal-close-btn{
-    border: 2px solid transparent;
-    width: 4rem; /* 64px */
-    height: 4rem; /* 64px */
-    border-radius: 50%;
-    font-size: 32px;
 }
     
 .modal-close-btn-container{
@@ -72,10 +70,13 @@
 }
 
 .svg-container{
+    width: 35px;
+    height: 35px;
     background-color: pink;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 .svg-icon{
 
