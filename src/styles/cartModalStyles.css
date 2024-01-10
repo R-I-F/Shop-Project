@@ -35,6 +35,9 @@
     height: 64px; /* 64px */
     border-radius: 50%;
     font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart-modal-btn{
@@ -73,7 +76,6 @@
     width: 35px;
     height: 35px;
     background-color: pink;
-    margin-left: 6px;
 }
 .svg-icon{
     display: none;
