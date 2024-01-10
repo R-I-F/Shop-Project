@@ -166,7 +166,9 @@ function CartModal({cartItems, setCartItems, isNavbarOn}){
                 <button 
                 className="modal-close-btn mt-2"
                 onClick={()=>handleHideModal()}>
-                        <FaAngleDoubleRight/>
+                        <div className="svg-container">
+                            <FaAngleDoubleRight className="svg-icon"/>
+                        </div>
                 </button>
             </div>
             {cartEl}
@@ -190,7 +192,9 @@ function CartModal({cartItems, setCartItems, isNavbarOn}){
             <button 
             className="cart-modal-btn"
             onClick={()=>handleShowModal()}>
-                <AiOutlineShoppingCart/>
+                <div className="svg-container">
+                    <AiOutlineShoppingCart className="svg-icon"/>
+                </div>
             </button>
             {cartModal}
         </div>
