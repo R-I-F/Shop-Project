@@ -42,7 +42,6 @@
     width: 64px; /* 64px */
     height: 64px; /* 64px */
     border-radius: 50%;
-    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,8 +74,10 @@
 .svg-container{
     width: 35px;
     height: 35px;
-    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .svg-icon{
-    /* display: none; */
+    font-size: 25px;
 }
