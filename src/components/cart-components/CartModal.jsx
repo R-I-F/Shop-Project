@@ -5,8 +5,7 @@ import "../../styles/cartModalStyles.css"
 import { fireBaseContext } from "../../FireBase/FireBaseProvider";
 import { Link } from "react-router-dom";
 
-
-function CartModal({cartItems, setCartItems, isNavbarOn}){
+function CartModal({pageFilter, cartItems, setCartItems, isNavbarOn}){
 
     const [showModal, setShowModal] = React.useState(false)
     const [grandTotal, setGrandTotal] = React.useState()
@@ -50,7 +49,8 @@ function CartModal({cartItems, setCartItems, isNavbarOn}){
         className="buy-btn-link"
         to='/login'
         state={{
-            pathname:location.pathname
+            pathname: location.pathname,
+            pageFilter: pageFilter
             }}>
         Buy Now
         </Link>)

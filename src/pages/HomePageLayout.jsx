@@ -16,8 +16,10 @@ export default function HomePageLayout({isCatDropDown, setIsCatDropDown, cartIte
                 setIsNavbarOn={setIsNavbarOn}
                 />
             </ScreenSizeProvider>
-            <Outlet/>
-            <Footer/>
+            <div className="body-footer-container">
+                <Outlet/>
+                <Footer/>
+            </div>
         </div>
     )
 }

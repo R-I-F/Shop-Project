@@ -75,18 +75,21 @@ function AccountBar({location, pageFilter, showNavbar}){
 
 
     return(
-        <div className="container-fluid custom-acc-bar">
-            <div className="row py-2">
-                <div className="col-md-3 col-sm-3 col-6 my-1 web-title-container">  
-                    <button
-                    onClick={()=>showNavbar()}>
-                        <BsList/>                  
-                    </button>
-                    <h3 className="web-title">My Shop</h3>
-                </div>
-                {addrEl()}
-                {greetingEl}
-            </div>   
+        <div className="custom-acc-bar gx-0">
+            <div className="d-flex py-2 px-2">
+
+                    <div className="col-md-3 col-sm-3 col-6 my-1 web-title-container">  
+                        <button
+                        onClick={()=>showNavbar()}>
+                            <BsList/>                  
+                        </button>
+                        <h3 className="web-title">My Shop</h3>
+                    </div>
+                    {addrEl()}
+                    {greetingEl}
+
+            </div>
+
         </div>
     )
 } 

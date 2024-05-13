@@ -28,6 +28,8 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
   
   const location = useLocation()
   const navigate = useNavigate()
+  console.log(location);
+  
   const getPageinatedDocsInDb = React.useContext(fireBaseContext).getPageinatedDocsInDb
   const getAllDocsInDbForPagination = React.useContext(fireBaseContext).getAllDocsInDbForPagination
   // console.log(location.state)
@@ -260,6 +262,7 @@ export default function Shop ({cartItems, setCartItems, isCatDropDown, setIsCatD
     <div className="shop-section-container">
       <div className="row  shop-section">
         <CartModal
+          pageFilter = {pageFilter}
           cartItems = {cartItems} 
           setCartItems = {setCartItems}
           isNavbarOn = {isNavbarOn}

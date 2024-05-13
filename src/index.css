@@ -6,6 +6,7 @@ html body{
   margin: 0;
   font-family: "inter", sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .site-container{

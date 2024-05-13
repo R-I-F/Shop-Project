@@ -58,10 +58,10 @@ export default function SignIn(){
         setEmailField("")
         setPassField("")
     }
-        console.log(location.state)
+        console.log(location)
         const signedInNavigationEl = location.state?.pathname?.startsWith("/shop/")?(
             <Navigate
-            to={location.state.pathname}
+            to={`${location.state.pathname}${location.state.search}`}
             />
         ):location.state?.pathname?.startsWith("/shop")?(
             <Navigate

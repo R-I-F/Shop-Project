@@ -11,7 +11,6 @@ export default function SignUp(){
      const createNewUserWithEmailAndPassword = React.useContext(fireBaseContext).createNewUserWithEmailAndPassword
      const isUserSignedIn = React.useContext(fireBaseContext).isUserSignedIn
      const location = useLocation()
-
      function handleClick(e){
           e.preventDefault()
           const email = emailField
