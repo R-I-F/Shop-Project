@@ -61,7 +61,7 @@ export default function SignIn(){
         console.log(location)
         const signedInNavigationEl = location.state?.pathname?.startsWith("/shop/")?(
             <Navigate
-            to={`${location.state.pathname}${location.state.search}`}
+            to={`${location.state.pathname}?page=1`}
             />
         ):location.state?.pathname?.startsWith("/shop")?(
             <Navigate
